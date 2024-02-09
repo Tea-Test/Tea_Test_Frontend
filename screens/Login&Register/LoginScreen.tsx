@@ -30,7 +30,7 @@ const LoginScreen = (props: any) => {
   const [password, setPassword] = useState('');
 
   function moveToHome() {
-    if (t_email == email) {
+    if (email == t_email) {
       if (t_password == password) {
         stack.navigate('HomePage');
       } else {

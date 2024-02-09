@@ -15,6 +15,20 @@ import EducationScreen from './screens/Education/EducationScreen';
 import MoodResultScreen from './screens/Moods/MoodResultScreen';
 import MoodSelectScreen from './screens/Moods/MoodSelectScreen';
 import {Alert} from 'react-native';
+import FirstScreen from './screens/First/FirstScreen';
+
+// //GetStarteScreen
+// const StartStack = createNativeStackNavigator();
+
+// const StartNavigator = () => {
+//     return (
+//       <StartStack.Navigator>
+//         <StartStack.Screen name="GetHome" component={FirstScreen} />
+//         <StartStack.Screen name="LoginHome" component={LoginScreen} />
+//         <StartStack.Screen name="MenuHome" component={HomeScreen} />
+//       </StartStack.Navigator>
+//     );
+//   };
 
 
 // Menu Navigator
@@ -29,6 +43,7 @@ const MenuNavigator = () => {
     </MenuStack.Navigator>
   );
 };
+
 
 // Mood Navigator
 const MoodStack = createNativeStackNavigator();
@@ -69,9 +84,6 @@ const AuthNavigator = () => {
     </AuthStack.Navigator>
   );
 };
-
-
-
 
 
 function App() {

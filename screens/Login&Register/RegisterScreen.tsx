@@ -15,8 +15,17 @@ import axios from 'axios';
 import tw from 'twrnc';
 import {Screen} from 'react-native-screens';
 import {Link} from '@react-navigation/native';
+import { ActivityIndicator } from 'react-native-paper';
+import { Alert } from 'react-native';
 
 const RegisterScreen = (props: any) => {
+  const stack = props.navigation;
+
+  function moveToLogin() {
+    stack.navigate('LoginPage');
+    
+  }
+
   console.log('Rendered Register Screen');
 
   const [name, setName] = useState('');
@@ -25,47 +34,13 @@ const RegisterScreen = (props: any) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // function handleSubmit() {
-  //     const userData = {
-  //         name: name,
-  //         email: email,
-  //         phone: phone,
-  //         password: password,
-  //         confirmPassword: confirmPassword
-  // };
+  const [saving, setSaving] = useState('');
 
-  //     axios
-  //       .post('http://192.168.8.177:5001/users', userData)
-  //       .then(res => console.log("Done!"))
-  //       .catch(e => console.log(e));
-  //   }
 
-  //   function handleName(e1) {
-  //     const nameVar = e1.nativeEvent.text;
-  //     setName(nameVar);
-  //   }
-  //   function handleEmail(e2) {
-  //     const emailVar = e2.nativeEvent.text;
-  //     setEmail(emailVar);
-  //   }
-  //   function handlePhone(e3) {
-  //     const phoneVar = e3.nativeEvent.text;
-  //     setPhone(phoneVar);
-  //   }
-  //   function handlePassword(e4) {
-  //     const passwordVar = e4.nativeEvent.text;
-  //     setPassword(passwordVar);
-  //   }
-  //   function handleConfirmPassword(e5) {
-  //     const confirmPasswordVar = e5.nativeEvent.text;
-  //     setConfirmPassword(confirmPasswordVar);
-  //   }
+  function saveUser() {
+    Alert.alert(name + " " + email + " " + phone + " " + password );
 
-  const stack = props.navigation;
-
-  function moveToLogin() {
-    stack.navigate('LoginPage');
-  }
+}
 
   return (
     <ScrollView
@@ -88,7 +63,7 @@ const RegisterScreen = (props: any) => {
                 <TextInput
                   placeholder="Enter your Name"
                   style={styles.registerInputText}
-                  // onChange={e1 => handleName(e1)}
+                  onChangeText={(v) => setName(v)}
                 />
                 {/* {name.length < 1 ? null : nameVerify ? (
                     <Feather name="check-circle" color="green" size={20} />
@@ -118,7 +93,7 @@ const RegisterScreen = (props: any) => {
                 <TextInput
                   placeholder="Enter your Email"
                   style={styles.registerInputText}
-                  // onChange={e2 => handleEmail(e2)}
+                  onChangeText={(v) => setEmail(v)}
                 />
               </View>
             </View>
@@ -134,7 +109,7 @@ const RegisterScreen = (props: any) => {
                 <TextInput
                   placeholder="Enter your Phone"
                   style={styles.registerInputText}
-                  // onChange={e3 => handlePhone(e3)}
+                  onChangeText={(v) => setPhone(v)}
                 />
               </View>
             </View>
@@ -148,16 +123,17 @@ const RegisterScreen = (props: any) => {
               </View>
               <View style={styles.columnRight}>
                 <TextInput
+                secureTextEntry
                   placeholder="Enter your Password"
                   style={styles.registerInputText}
-                  // onChange={e4 => handlePassword(e4)}
+                  onChangeText={(v) => setPassword(v)}
                 />
               </View>
             </View>
           </View>
         </View>
         <View>
-          <View style={styles.list}>
+          {/* <View style={styles.list}>
             <View style={styles.row}>
               <View style={styles.columnLeft}>
                 <Text style={styles.registerLabel}>Confrim Password</Text>
@@ -166,23 +142,32 @@ const RegisterScreen = (props: any) => {
                 <TextInput
                   placeholder="Enter your Password Again"
                   style={styles.registerInputText}
-                  // onChange={e5 => handleConfirmPassword(e5)}
+                  onChangeText={(v) => setName(v)}
                 />
               </View>
             </View>
-          </View>
+          </View> */}
         </View>
 
         <View style={tw`self-end py-6`}>
           <TouchableOpacity
-            // onPress={() => handleSubmit()}
+            onPress={saveUser}
             style={tw`bg-green-600 rounded w-20 p-2`}>
-            <Text style={tw`text-white self-center`}>Register</Text>
+            <View>
+            {
+                (saving) ? <ActivityIndicator color='white' />
+                :
+                <Text style={tw`text-white self-center`}>Register</Text>
+            }
+            </View>
           </TouchableOpacity>
         </View>
+
+
+
         <View>
           <TouchableOpacity onPress={moveToLogin}>
-            <Text style={tw`text-black`}>Register</Text>
+            <Text style={tw`text-black`}>Go to Login</Text>
           </TouchableOpacity>
         </View>
       </Screen>
