@@ -10,20 +10,24 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 import axios from 'axios';
 
 import styles from './style';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 // import {Screen} from 'react-native-screens';
+import tw from 'twrnc';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const LoginScreen = (props: any) => {
   console.log('Rendered Login Screen');
 
   const stack = props.navigation;
 
-  const t_email = 'abc@gmail.com';
+  const t_email = 'chamaalidilka@gmail.com';
   const t_password = '123';
 
   const [email, setEmail] = useState('');
@@ -46,88 +50,94 @@ const LoginScreen = (props: any) => {
   }
 
   return (
-    <ScrollView style={styles.loginContainer}>
-      <View>
-        <Image
-          style={styles.logo}
-          source={require('../../assets/TeaTestLogo.png')}
-        />
-      </View>
-      <View style={styles.loginContainer}>
-        <Text style={styles.text_header}>Login !!!</Text>
-        <View style={styles.action}>
-          <FontAwesome name="user-o" color="#420475" style={styles.smallIcon} />
-          <TextInput
-            placeholder="Mobile or Email"
-            style={styles.textInput}
-            // value="email"
-            onChangeText={v => setEmail(v)}
-          />
-        </View>
-        <View style={styles.action}>
-          <FontAwesome name="user-o" color="#420475" style={styles.smallIcon} />
-          <TextInput
-            placeholder="Password"
-            style={styles.textInput}
-            secureTextEntry={true}
-            // value="password"
-            onChangeText={v => setPassword(v)}
-          />
-        </View>
-        <View
-          style={{
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
-            marginTop: 8,
-            marginRight: 10,
-          }}>
-          <Text style={{color: '#919191', fontWeight: '700'}}>
-            Forgot Password
+    <View style={tw`flex-1 p-3 bg-white`}>
+      <View style={tw`flex-row flex-1 justify-center py-8`}>
+        <View style={tw`flex-2   justify-center`}>
+          <Text
+            style={tw`text-yellow-500 font-bold text-4xl pl-4 justify-center`}>
+            TeaTest
           </Text>
         </View>
-      </View>
-      <View style={styles.button}>
-        <TouchableOpacity style={styles.inBut} onPress={moveToHome}>
-          <View>
-            <Text style={styles.textSign}>Log In</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={{padding: 15}}>
-          <Text style={{fontSize: 14, fontWeight: 'bold', color: '#919191'}}>
-            ---or Continue as---
-          </Text>
-        </View>
-        <View>
-          <View style={styles.bottomButton}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <TouchableOpacity style={styles.inBut} onPress={moveToRegister}>
-                <Text style={styles.bottomText}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <TouchableOpacity style={styles.inBut}>
-                <FontAwesome
-                  name="user-circle-o"
-                  color="white"
-                  style={styles.smallIcon2}
-                />
-              </TouchableOpacity>
-              <Text style={styles.bottomText}>Google</Text>
-            </View>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <TouchableOpacity style={styles.inBut}>
-                <FontAwesome
-                  name="user-circle-o"
-                  color="white"
-                  style={styles.smallIcon2}
-                />
-              </TouchableOpacity>
-              <Text style={styles.bottomText}>FaceBook</Text>
-            </View>
-          </View>
+        <View style={tw`flex-1`}>
+          <Image
+            style={tw`self-center `}
+            source={require('../../assets/TeaTestLogo.png')}
+          />
         </View>
       </View>
-    </ScrollView>
+
+      <View style={tw`flex-6`}>
+        <View style={tw``}>
+          <ScrollView style={tw` `}>
+            <View style={tw`flex-3`}>
+              <Image
+                style={tw`self-center mt-10`}
+                source={require('../../assets/TeaCup.png')}
+              />
+            </View>
+            <View style={tw` px-2 py-10 rounded-8`}>
+              {/* <KeyboardAvoidingView> */}
+              <View style={tw`flex flex-row p-3`}>
+                <FontAwesome
+                  name="user"
+                  color="#000000"
+                  size={25}
+                  style={tw`flex-1`}
+                />
+                <TextInput
+                  placeholder="Enter Email"
+                  style={tw`flex-9 bg-white border rounded-6 mx-3 px-6`}
+                //   secureTextEntry={true}
+                  // value="password"
+                  onChangeText={v => setEmail(v)}
+                />
+              </View>
+              <View style={tw`flex flex-row px-2 py-4`}>
+                <FontAwesome
+                  name="lock"
+                  color="#000000"
+                  size={30}
+                  style={tw`flex-1  self-center justify-center`}
+                />
+                <TextInput
+                  placeholder="Enter Password"
+                  style={tw`flex-9 bg-white border rounded-6 mx-3 px-6`}
+                  secureTextEntry={true}
+                  // value="password"
+                  onChangeText={v => setPassword(v)}
+                />
+              </View>
+              {/* </KeyboardAvoidingView>   */}
+
+              <View style={tw`py-3 bg-yellow-400  rounded-6  mx-4`}>
+                <TouchableOpacity onPress={moveToHome}>
+                  <View style={tw``}>
+                    <Text style={tw`text-white self-center font-bold text-lg`}>
+                      Log In
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={tw`justify-center`}>
+                <View style={tw` py-4 self-center flex justify-center `}>
+                  <Text style={tw`justify-center text-black`}>
+                    Don't have an account
+                    <TouchableOpacity
+                      style={tw`justify-center`}
+                      onPress={moveToRegister}>
+                      <Text style={tw` text-yellow-600 justify-center`}>
+                        {' '}
+                        Register
+                      </Text>
+                    </TouchableOpacity>
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+    </View>
   );
 };
 

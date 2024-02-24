@@ -95,8 +95,9 @@
 import React from 'react';
 import { FlatList, View, Text, ActivityIndicator } from 'react-native';
 
-const MoodResultScreen = () => {
+const MoodResultScreen = ({route}:any) => {
   
+ const {value} = route.params;
 
 
   return (
@@ -111,7 +112,7 @@ const MoodResultScreen = () => {
       ) : (
         <ActivityIndicator size="large" /> // Show a loading indicator while fetching results
       )} */}
-      <Text>R</Text>
+      <Text>{value}</Text>
     </View>
   );
 };

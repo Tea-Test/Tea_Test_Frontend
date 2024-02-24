@@ -93,11 +93,7 @@ function App() {
     setIsLoggedIn(true);
   };
 
-  const [isMoodSelected, setIsMoodSelected] = useState('');
 
-  const handleGetResult = () => {
-    setIsMoodSelected(true);
-  };
 
   return (
     <NavigationContainer>
@@ -107,6 +103,7 @@ function App() {
         <MainTabs />
       )}
     </NavigationContainer>
+    
   );
 }
 
