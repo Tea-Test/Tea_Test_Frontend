@@ -36,7 +36,7 @@ const LoginScreen = (props: any) => {
   function moveToHome() {
     if (email == t_email) {
       if (t_password == password) {
-        stack.navigate('HomePage');
+        stack.navigate('Home');
       } else {
         Alert.alert('Message', 'Password is incorrect!');
       }
@@ -46,7 +46,7 @@ const LoginScreen = (props: any) => {
   }
 
   function moveToRegister() {
-    stack.navigate('RegisterPage');
+    stack.navigate('Register');
   }
 
   return (
@@ -77,16 +77,16 @@ const LoginScreen = (props: any) => {
             </View>
             <View style={tw` px-2 py-10 rounded-8`}>
               {/* <KeyboardAvoidingView> */}
-              <View style={tw`flex flex-row p-3`}>
+              <View style={tw`flex flex-row px-2 py-4`}>
                 <FontAwesome
                   name="user"
                   color="#000000"
                   size={25}
-                  style={tw`flex-1`}
+                  style={tw`flex-1  self-center justify-center`}
                 />
                 <TextInput
                   placeholder="Enter Email"
-                  style={tw`flex-9 bg-white border rounded-6 mx-3 px-6`}
+                  style={tw`flex-9 bg-white border rounded-6 mx-2 px-6`}
                 //   secureTextEntry={true}
                   // value="password"
                   onChangeText={v => setEmail(v)}
@@ -101,15 +101,15 @@ const LoginScreen = (props: any) => {
                 />
                 <TextInput
                   placeholder="Enter Password"
-                  style={tw`flex-9 bg-white border rounded-6 mx-3 px-6`}
+                  style={tw`flex-9 bg-white border rounded-6 mx-2 px-6`}
                   secureTextEntry={true}
                   // value="password"
                   onChangeText={v => setPassword(v)}
                 />
               </View>
               {/* </KeyboardAvoidingView>   */}
-
-              <View style={tw`py-3 bg-yellow-400  rounded-6  mx-4`}>
+              {/* px-2 py-10 rounded-8 */}
+              <View style={tw`py-3 bg-yellow-500  rounded-6  mx-2`}>
                 <TouchableOpacity onPress={moveToHome}>
                   <View style={tw``}>
                     <Text style={tw`text-white self-center font-bold text-lg`}>

@@ -23,7 +23,7 @@ const EducationScreen = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('http://192.168.8.100:5009/news');
+        const response = await axios.get('http://192.168.8.101:5009/news');
         setNewsArticles(response.data);
         console.log('Good');
       } catch (error) {

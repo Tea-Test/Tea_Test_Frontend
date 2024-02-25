@@ -24,7 +24,11 @@ const RegisterScreen = (props: any) => {
   const stack = props.navigation;
 
   function moveToLogin() {
-    stack.navigate('LoginPage');
+    stack.navigate('Login');
+  }
+
+  function moveToHome() {
+    stack.navigate('Home');
   }
 
   console.log('Rendered Register Screen');
@@ -80,7 +84,7 @@ const RegisterScreen = (props: any) => {
               </View>
               <View style={tw``}>
                 <TextInput
-                  placeholder="thwh"
+                  placeholder="Enter your first name"
                   style={tw`bg-white border rounded-6 px-4 border-yellow-500`}
                 />
               </View>
@@ -91,7 +95,7 @@ const RegisterScreen = (props: any) => {
               </View>
               <View style={tw``}>
                 <TextInput
-                  placeholder="erjje"
+                  placeholder="Enter your last name"
                   style={tw`bg-white border rounded-6 px-4 border-yellow-500`}
                 />
               </View>
@@ -102,7 +106,7 @@ const RegisterScreen = (props: any) => {
               </View>
               <View style={tw``}>
                 <TextInput
-                  placeholder="rhth"
+                  placeholder="Enter your email"
                   style={tw`bg-white border rounded-6 px-4 border-yellow-500`}
                 />
               </View>
@@ -114,18 +118,18 @@ const RegisterScreen = (props: any) => {
               </View>
               <View style={tw``}>
                 <TextInput
-                  placeholder="fssds"
+                  placeholder="Enter a new password"
                   style={tw`bg-white border rounded-6 px-4 border-yellow-500`}
                   secureTextEntry={true}
                 />
               </View>
             </View>
 
-            <View style={tw`my-6 py-3 bg-yellow-400  rounded-6  mx-4`}>
+            <View style={tw`my-6 py-3 bg-yellow-500  rounded-6  mx-2`}>
               <TouchableOpacity>
                 <View style={tw``}>
                   <Text style={tw`text-white self-center font-bold text-lg`}>
-                    Log In
+                    Submit
                   </Text>
                 </View>
               </TouchableOpacity>

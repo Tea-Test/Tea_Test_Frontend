@@ -9,13 +9,10 @@ export default function HomeScreen(hm:any) {
 const edu = hm.navigation;
 
 function goToEducation(){
-    edu.navigate('MenuEducation');
+    edu.navigate('Tea News');
 }
 
 
-function goToMoodSelect(){
-    edu.navigate("MenuMoodSelect");
-}
 
 
 
@@ -40,9 +37,9 @@ function goToMoodSelect(){
       <TouchableOpacity style={tw`p-3 bg-teal-500 rounded-lg m-7`} onPress={goToEducation}>
         <Text style={tw`text-3xl font-bold text-white`}>Education</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={tw`p-3 bg-teal-500 rounded-lg m-7`} onPress={goToMoodSelect}>
+      {/* <TouchableOpacity style={tw`p-3 bg-teal-500 rounded-lg m-7`} onPress={goToMoodSelect}>
         <Text style={tw`text-3xl font-bold text-white`}>MoodSelect</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
