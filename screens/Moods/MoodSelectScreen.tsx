@@ -45,20 +45,18 @@ const MoodSelectScreen = (md: any) => {
       <View style={tw`py-4`}>
         <Text style={tw`text-black self-center text-lg text-justify  font-mono`}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima dolor
-          asperiores eos, aliquid eveniet dolorum magnam, sunt atque ipsa
-          veritatis earum doloremque corrupti cumque voluptatum odio quaerat
-          quis saepe. Dicta!
+          asperiores eos. Dicta!
         </Text>
       </View>
       <View style={tw`py-4`}>
         <Text style={tw`text-black text-lg text-justify pb-2`}>
-          {'\u2751'}  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {'\u2751'}  Lorem ipsum.
         </Text>
         <Text style={tw`text-black text-lg text-justify pb-2 `}>
-          {'\u2751'}  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {'\u2751'}  Lorem ipsum.
         </Text>
         <Text style={tw`text-black  text-lg text-justify pb-2 `}>
-          {'\u2751'}  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {'\u2751'}  Lorem ipsum.
         </Text>
       </View>
       </View>
@@ -80,7 +78,7 @@ const MoodSelectScreen = (md: any) => {
 <View style={tw`py-3 bg-yellow-500  rounded-3 p-2`}>
           <TouchableOpacity onPress={goToResult}>
             <View>
-              <Text  style={tw`text-white self-center font-bold text-lg`}>Result</Text>
+              <Text  style={tw`text-white self-center font-bold text-lg`}>View</Text>
             </View>
           </TouchableOpacity>
         </View>

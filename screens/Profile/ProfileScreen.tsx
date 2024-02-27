@@ -4,7 +4,7 @@ import tw from 'twrnc';
 
 export default function ProfileScreen() {
   return (
-    <View style={tw`bg-white pb-100`}>
+    <View style={tw`bg-white flex-1`}>
       <View style={tw`justify-center`}>
         <View>
           <Text style={tw`self-center p-5 text-2xl text-black`}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, Text, Touchable, TouchableOpacity, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
 import tw from 'twrnc';
 
 const FirstScreen = () => {
@@ -17,3 +17,5 @@ const FirstScreen = () => {
 };
 
 export default FirstScreen;
+
+

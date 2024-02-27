@@ -4,7 +4,7 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Import screens
 import LoginScreen from './screens/Login&Register/LoginScreen';
@@ -18,6 +18,13 @@ import {Alert} from 'react-native';
 import FirstScreen from './screens/First/FirstScreen';
 import GradeResultScreen from './screens/Grades/GradeResultScreen';
 import GradeScanScreen from './screens/Grades/GradeScanScreen';
+import {CommonActions} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Text, BottomNavigation} from 'react-native-paper';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {BlurView} from 'expo-blur';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import tw from 'twrnc';
 
 // //GetStarteScreen
 // const StartStack = createNativeStackNavigator();
@@ -72,10 +79,9 @@ const ProfileStack = createNativeStackNavigator();
 
 const ProfileNavigator = () => {
   return (
-    <ProfileStack.Navigator  screenOptions={{headerShown: true}}>
+    <ProfileStack.Navigator screenOptions={{headerShown: true}}>
       <ProfileStack.Screen name="Profile Settings" component={ProfileScreen} />
       <ProfileStack.Screen name="Home" component={HomeScreen} />
-
     </ProfileStack.Navigator>
   );
 };
@@ -85,21 +91,31 @@ const Tab = createBottomTabNavigator();
 
 const MainTabs = () => {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}} >
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: '#ffcc00',
+        headerShown: false,
+        tabBarStyle: { height:80, paddingTop: 10, paddingBottom:20}
+            }}
+            >
       <Tab.Screen
-        name="Home"
+        name="Home Sc"
         component={MenuNavigator}
         options={{
-          tabBarIcon: () => (<Ionicons name="home" size={30} />),
-          
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons name="home" color={color} size={30} />
+          ),
         }}
       />
+
       <Tab.Screen
         name="Scan"
         component={GradeNavigator}
         options={{
-          tabBarIcon: () => (
-            <Ionicons name="camera" size={30} color="#8f8d8d" />
+          tabBarLabel: 'Scan',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons name="camera" color={color} size={30} />
           ),
         }}
       />
@@ -107,15 +123,24 @@ const MainTabs = () => {
         name="Mood"
         component={MoodNavigator}
         options={{
-          tabBarIcon: () => <Ionicons name="happy" size={30} color="#8f8d8d" />,
+          tabBarLabel: 'Mood',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons
+              name="emoticon-outline"
+              color={color}
+              size={30}
+              style={tw`justify-center active:bg-red-100`}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: () => (
-            <Ionicons name="person" size={30} color="#8f8d8d" />
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons name="account" color={color} size={35} />
           ),
         }}
       />
@@ -150,9 +175,15 @@ function App() {
       ) : (
         <MainTabs />
       )}
-      {/* <MainTabs /> */}
+{/* <MainTabs /> */}
     </NavigationContainer>
   );
 }
 
 export default App;
+
+//ipaddress was used in
+//homepage
+//gradeRresultPage
+//moodResultPage
+//educationPage
