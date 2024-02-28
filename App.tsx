@@ -25,7 +25,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {BlurView} from 'expo-blur';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import tw from 'twrnc';
+import {AppRegistry} from 'react-native';
+import {launchCamera} from 'react-native-image-picker';
+import {name as appName} from './app.json';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
+
+const options = {
+    mediaType: 'photo',
+    includeBase64: true,
+  };
+  
 // //GetStarteScreen
 // const StartStack = createNativeStackNavigator();
 
@@ -160,6 +170,18 @@ const AuthNavigator = () => {
     </AuthStack.Navigator>
   );
 };
+
+global.launchCamera = (callback) => {
+    launchCamera(options, response => {
+      if (response.didCancel || response.error) {
+        console.log('Image picker error:', response.error);
+      } else {
+        callback(response.assets[0]);
+      }
+    });
+  };
+
+  AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(App));
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState();
