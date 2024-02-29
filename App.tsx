@@ -209,3 +209,5 @@ export default App;
 //gradeRresultPage
 //moodResultPage
 //educationPage
+//registrationpage
+//loginpage

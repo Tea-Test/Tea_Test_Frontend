@@ -28,7 +28,7 @@ export default function HomeScreen(hm: any) {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(`http://192.168.8.101:5009/news`);
+        const response = await axios.get(`http://192.168.8.100:5009/news`);
         setNews(response.data);
         console.log(' News were successfully retrieved !!!');
       } catch (error) {
