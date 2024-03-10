@@ -204,7 +204,7 @@ function App() {
 
 export default App;
 
-//ipaddress was used in
+//ipAddress was used in
 //homepage
 //gradeRresultPage
 //moodResultPage

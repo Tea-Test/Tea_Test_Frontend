@@ -30,8 +30,16 @@ const LoginScreen = (props: any) => {
   const t_email = 'chamaalidilka@gmail.com';
   const t_password = '123';
 
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const getUser = async () => {
+    const response = await axios.get(
+        `http://192.168.8.101:5009/user/${email}`,
+      );
+  }
 
   function moveToHome() {
     if (email == t_email) {
