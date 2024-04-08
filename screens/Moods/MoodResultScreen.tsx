@@ -24,7 +24,7 @@ const MoodResultScreen = ({route}: any) => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.8.101:5009/products/${value}`,
+          `http://192.168.8.100:5009/products/${value}`,
         );
         setProducts(response.data);
         console.log(value + ' Products were successfully retrieved !!!');

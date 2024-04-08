@@ -15,81 +15,89 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {Screen} from 'react-native-screens';
 // import bg from '../../assets/mood-select-bg.png'
 import LinearGradient from 'react-native-linear-gradient';
-//import { TextInput } from 'react-native-gesture-handler';
-import ImagePicker from 'react-native-image-picker';
+// import { TextInput } from 'react-native-gesture-handler';
+// import ImagePicker from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
+import storage from '@react-native-firebase/storage';
+
 import axios from 'axios';
 
 const GradeScanScreen = (md: any) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState();
+  const [imgSrc, setImgSrc] = useState(null);
+
+  const DEFAULT_HEIGHT = 500;
+  const DEFAULT_WITH = 600;
+  const defaultPickerOptions = {
+    cropping: true,
+    height: DEFAULT_HEIGHT,
+    width: DEFAULT_WITH,
+  };
   //
   const GradeNavigator = md.navigation;
 
   const [image, setImage] = useState(null); // Use null instead of an empty string for the image state
 
-  const uploadImage = async imageData => {
+  const recognizeFromCamera = async (options = defaultPickerOptions) => {
     try {
-      const formData = new FormData();
-      formData.append('image', {
-        uri: imageData.uri,
-        type: imageData.type,
-        name: imageData.fileName,
+      const image = await ImagePicker.openCamera({
+        width: 300,
+        height: 400,
+        cropping: true,
       });
-
-      // Add your logic to send the formData to the server if needed
-    } catch (error) {
-      console.error(error);
+      setImgSrc({uri: image.path});
+      console.log(image.path);
+      uploadImage(image.path);
+    } catch (err) {
+      if (err.message !== 'User cancelled image selection') {
+        console.error(err);
+      }
     }
   };
 
-  const handleImageUpload = async () => {
+  const uploadImage = async uploadImage => {
+    const stack = md.navigation;
+
+    function moveToResult() {
+      stack.navigate('Grade Result', {uploadedImageUrl});
+    }
+
+    if (!uploadImage) {
+      console.log('No image to upload');
+      return;
+    }
+
+    const reference = storage().ref('images/' + new Date().getTime());
+
     try {
-      ImagePicker.launchCamera(
+      await reference.putFile(uploadImage);
+      console.log('Image uploaded successfully');
+      Alert.alert('Success', 'Registration successful!', [
         {
-          mediaType: 'photo',
-          includeBase64: false,
+          text: 'OK',
+          onPress: () => {
+            moveToResult();
+          },
         },
-        response => {
-          if (!response.didCancel) {
-            // setImage(response);
-            uploadImage(response);
-          }
-        },
-      );
+      ]);
+
+      // Retrieve the download URL of the uploaded image
+      const url = await reference.getDownloadURL();
+      console.log('Image URL:', url);
+      setUploadedImageUrl({url});
     } catch (error) {
-      console.error('Image upload error:', error);
+      console.log('Error uploading image:', error);
     }
   };
 
   function goToResult() {
     GradeNavigator.navigate('Grade Result');
   }
-
-  const scan = async () => {
-    try {
-      const requestData = {
-        image: image ? image.uri : null, // Pass the URI or null if no image is selected
-      };
-
-      const response = await axios.post(
-        'http://192.168.8.100:5009/users',
-        requestData,
-      );
-
-      console.log('Registration successful:', response.data);
-      Alert.alert('Success', 'Registration successful!', [
-        {
-          text: 'OK',
-          onPress: () => {
-            goToResult();
-          },
-        },
-      ]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <View style={tw`flex-1`}>
@@ -128,7 +136,7 @@ const GradeScanScreen = (md: any) => {
               style={{width: 200, height: 200}}
             />
           )}
-          <TouchableOpacity onPress={handleImageUpload}>
+          <TouchableOpacity onPress={recognizeFromCamera}>
             <Text style={tw`text-black`}>Upload Image</Text>
           </TouchableOpacity>
         </View>
@@ -144,8 +152,25 @@ const GradeScanScreen = (md: any) => {
           </View>
         </View>
       </View>
+      {imgSrc && (
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={imgSrc} />
+        </View>
+      )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    marginVertical: 15,
+    height: 500 / 3.5,
+    width: 600 / 3.5,
+  },
+});
 
 export default GradeScanScreen;
