@@ -39,11 +39,11 @@ const EducationScreen = () => {
     <ScrollView>
       <View style={tw`bg-white overflow-visible`}>
         {newsArticles.map((news, index) => (
-          <View key={index} style={tw``}>
+          <View key={index} style={tw`pb-3`}>
             <View>
               <View style={tw``}>
-                <Text style={tw`self-center text-2xl text-black`}>
-                  {news.no}. {news.title}
+                <Text style={tw`text-black text-base text-justify font-bold px-3 m-3`}>
+                  {news.title}
                 </Text>
               </View>
               <View>
@@ -51,6 +51,7 @@ const EducationScreen = () => {
                   width={360}
                   height={200}
                   source={{uri: news.image}}
+                  style={tw`self-center `}
                   alt="hi"
                   onError={error =>
                     console.error('Image loading error:', error)
@@ -59,14 +60,14 @@ const EducationScreen = () => {
               </View>
               <View style={tw`p-3`}>
                 <View key={index}>
-                  {activeIndex === index && <Text>{news.description}</Text>}
+                  {activeIndex === index && <Text style={tw`text-black text-base text-justify px-3`}>{news.description}</Text>}
                   <TouchableOpacity
                     onPress={() =>
                       setActiveIndex(activeIndex === index ? null : index)
                     }
-                    style={tw`bg-white border rounded`}>
-                    <Text style={tw`text-black`}>
-                      {activeIndex === index ? 'Hide Text' : 'Show Text'}
+                    style={tw`bg-yellow-500 border-0 p-3 rounded m-3`}>
+                    <Text style={tw`text-white self-center text-base font-bold`}>
+                      {activeIndex === index ? 'Hide' : 'Read More'}
                     </Text>
                   </TouchableOpacity>
                 </View>

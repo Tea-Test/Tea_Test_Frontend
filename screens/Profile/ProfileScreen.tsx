@@ -8,7 +8,7 @@ export default function ProfileScreen() {
       <View style={tw`justify-center`}>
         <View>
           <Text style={tw`self-center p-5 text-2xl text-black`}>
-            Hi, Sithumi
+            Hi, Chamaali
           </Text>
         </View>
         <View>
@@ -29,10 +29,10 @@ export default function ProfileScreen() {
           </View>
           <View style={tw`flex-row pb-5`}>
             <View style={tw`basis-1/2`}>
-              <Text style={tw`text-xl text-black`}>Sithumi</Text>
+              <Text style={tw`text-xl text-black`}>Chamaali</Text>
             </View>
             <View style={tw`basis-1/2`}>
-              <Text style={tw`text-xl text-black`}>Perera</Text>
+              <Text style={tw`text-xl text-black`}>Dilka</Text>
             </View>
           </View>
           <View style={tw`flex-row`}>
@@ -43,7 +43,7 @@ export default function ProfileScreen() {
           <View style={tw`flex-row pb-5`}>
             <View style={tw``}>
               <Text style={tw`text-xl text-black`}>
-                sithumiperera@gmail.com
+                chamaalidilka@gmail.com
               </Text>
             </View>
           </View>

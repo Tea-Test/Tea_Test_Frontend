@@ -192,12 +192,12 @@ function App() {
 
   return (
     <NavigationContainer>
-      {/* {!isLoggedIn ? (
+      {!isLoggedIn ? (
         <AuthNavigator onLoginSuccess={handleLoginSuccess} />
       ) : (
         <MainTabs />
-      )} */}
-<MainTabs />
+      )}
+{/* <MainTabs /> */}
     </NavigationContainer>
   );
 }

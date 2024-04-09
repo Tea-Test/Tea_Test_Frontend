@@ -41,24 +41,22 @@ export default function HomeScreen(hm: any) {
   }, []);
 
   return (
-    <View style={tw`flex-1 flex self-center bg-white`}>
+    <View style={tw`flex-1 flex self-center bg-gray-100`}>
       <View  style={tw``}>
-        <View style={tw`flex-4 bg-yellow-300  px-3 shadow-xl`} >
-          <View>
-            <Text style={tw`text-3xl font-bold text-black m-7 pt-3`}>
+        <View style={tw`flex-4 bg-yellow-300  px-3 shadow-xl flex items-center justify-center h-screen`} >
+          <View style={tw`self-center`}  >
+            <Text style={tw`text-3xl font-bold text-black pb-3`}>
               Welcome to TeaTest..!!
             </Text>
           </View>
           <View style={tw``}>
-            <Text style={tw`pb-3 pt-6 px-3 text-base text-black text-justify`}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-              dolorem at labore soluta, unde est sit possimus nobis beatae.
-              Fugit qui eos perspiciatis libero quas illum quam nam, dolore
-              iste.
+            <Text style={tw` px-4 text-xl text-black text-justify`}>
+            Step into a world of tea exploration with our innovative app! Powered by AI, it offers personalized recommendations and a vibrant community. Say hello to a tailored tea experience like no other!
             </Text>
           </View>
         </View>
-        <View style={tw` flex-6 mx-3 my-8`}>
+        <View style={tw``}>
+        <View style={tw` my-6 py-2 pb-4 bg-white  px-3 shadow-xl`}>
           <View style={tw`h-80 mb-4`}>
             <ScrollView
               horizontal
@@ -72,7 +70,7 @@ export default function HomeScreen(hm: any) {
                 {news.map((news, index) => (
                   <View style={tw` mb-3   p-2  `} key={index}>
                     <View style={tw`bg-white shadow-md rounded-xl w-80 h-75`}>
-                      <View style={tw`bg-blue-100 `}>
+                      <View style={tw``}>
                         <Image
                           height={180}
                           source={{uri: news.image}}
@@ -84,7 +82,7 @@ export default function HomeScreen(hm: any) {
                         />
                       </View>
                       <View style={tw`m-3  p-2 pb-10`}>
-                        <Text style={tw`text-base text-black text-justify `}>
+                        <Text style={tw`text-base text-black text-justify font-bold`}>
                           {news.title}
                         </Text>
                       </View>
@@ -95,16 +93,18 @@ export default function HomeScreen(hm: any) {
             </ScrollView>
           </View>
 
-          <View style={tw`mt-2 self-end`}>
+          <View style={tw` self-end`}>
             <TouchableOpacity
               style={tw`bg-yellow-500 p-3 px-5 self-center rounded-2xl shadow-lg`}
               onPress={goToEducation}>
               <View>
-                <Text style={tw`text-white font-bold text-lg`}>Read more</Text>
+                <Text style={tw`text-white font-bold text-lg`}>More News</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+        </View>
+        
       </View>
     </View>
   );

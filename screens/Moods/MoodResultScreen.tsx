@@ -40,7 +40,7 @@ const MoodResultScreen = ({route}: any) => {
   return (
     <ScrollView>
         <View style={tw`pt-10 pb-6 `}>
-            <Text style={tw`self-center text-black text-2xl shadow-xl`}>Less Stress, More Energy..</Text>
+            <Text style={tw`self-center text-black text-2xl shadow-xl`}>Discover Your Perfect Match!</Text>
         </View>
       <View style={tw` overflow-visible flex-row flex-wrap`}>
         {products.map((product, index) => (

@@ -173,7 +173,7 @@ const RegisterScreen = props => {
             </View>
           </View>
 
-          <View>
+          {/* <View>
             {image && (
               <Image
                 source={{uri: image.uri}}
@@ -183,7 +183,7 @@ const RegisterScreen = props => {
             <TouchableOpacity onPress={handleImageUpload}>
               <Text>Upload Image</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
 
           <View style={tw`my-6 py-3 bg-yellow-500  rounded-6  mx-2`}>
             <TouchableOpacity onPress={handleRegistration}>

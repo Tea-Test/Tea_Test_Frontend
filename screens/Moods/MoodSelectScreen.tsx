@@ -31,34 +31,23 @@ const MoodSelectScreen = (md: any) => {
   return (
 
 <View
-      style={tw`flex-1`}>
+      style={tw`flex-1 px-5`}>
         
       <View style={tw`justify-center pt-10 pb-7`}>
-        <Text style={tw`text-black self-center text-3xl`}>
-          Select Your Mood Here
+        <Text style={tw`text-black self-center font-bold text-3xl`}>
+          Select Your Mood
         </Text>
       </View>
       
 
-      <View style={tw` mx-3 px-4 bg-white rounded-3 shadow-2xl opacity-100`}>
+      <View style={tw`  bg-white rounded-3 shadow-2xl opacity-100`}>
 
-      <View style={tw`py-4`}>
-        <Text style={tw`text-black self-center text-lg text-justify  font-mono`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima dolor
-          asperiores eos. Dicta!
+      <View style={tw`py-6`}>
+        <Text style={tw`text-black self-center text-lg text-justify px-4`}>
+        Choose Your Mood, Brew Your Bliss: Select sleepy, stressed, or energized, and discover your perfect tea match. Elevate your tea experience with personalized selections tailored to your emotional state. It's the ultimate way to find serenity or get that much-needed raise, one sip at a time.
         </Text>
       </View>
-      <View style={tw`py-4`}>
-        <Text style={tw`text-black text-lg text-justify pb-2`}>
-          {'\u2751'}  Lorem ipsum.
-        </Text>
-        <Text style={tw`text-black text-lg text-justify pb-2 `}>
-          {'\u2751'}  Lorem ipsum.
-        </Text>
-        <Text style={tw`text-black  text-lg text-justify pb-2 `}>
-          {'\u2751'}  Lorem ipsum.
-        </Text>
-      </View>
+      
       </View>
 
       <View

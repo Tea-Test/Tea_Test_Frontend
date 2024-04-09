@@ -27,8 +27,8 @@ const LoginScreen = (props: any) => {
 
   const stack = props.navigation;
 
-  const t_email = 'ishan@gmail.com';
-  const t_password = '123';
+  const t_email = 'chamaalidilka@gmail.com';
+  const t_password = 'Abc123';
 
 
 
