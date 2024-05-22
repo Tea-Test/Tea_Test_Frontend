@@ -37,7 +37,7 @@ const LoginScreen = (props: any) => {
 
   const getUser = async () => {
     const response = await axios.get(
-        `http://192.168.8.101:5009/user/${email}`,
+        `http://192.168.8.100:5009/user/${email}`,
       );
   }
 

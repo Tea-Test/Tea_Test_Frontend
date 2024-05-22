@@ -25,9 +25,9 @@ const EducationScreen = () => {
       try {
         const response = await axios.get('http://192.168.8.100:5009/news');
         setNewsArticles(response.data);
-        console.log('Good');
+        console.log('News Retrieved successfully!');
       } catch (error) {
-        console.error(error);
+        console.error('Check your connection for EductionScreen', error);
         Alert.alert('Message', 'Check your connection!');
       }
     };
@@ -42,7 +42,8 @@ const EducationScreen = () => {
           <View key={index} style={tw`pb-3`}>
             <View>
               <View style={tw``}>
-                <Text style={tw`text-black text-base text-justify font-bold px-3 m-3`}>
+                <Text
+                  style={tw`text-black text-base text-justify font-bold px-3 m-3`}>
                   {news.title}
                 </Text>
               </View>
@@ -60,13 +61,18 @@ const EducationScreen = () => {
               </View>
               <View style={tw`p-3`}>
                 <View key={index}>
-                  {activeIndex === index && <Text style={tw`text-black text-base text-justify px-3`}>{news.description}</Text>}
+                  {activeIndex === index && (
+                    <Text style={tw`text-black text-base text-justify px-3`}>
+                      {news.description}
+                    </Text>
+                  )}
                   <TouchableOpacity
                     onPress={() =>
                       setActiveIndex(activeIndex === index ? null : index)
                     }
                     style={tw`bg-yellow-500 border-0 p-3 rounded m-3`}>
-                    <Text style={tw`text-white self-center text-base font-bold`}>
+                    <Text
+                      style={tw`text-white self-center text-base font-bold`}>
                       {activeIndex === index ? 'Hide' : 'Read More'}
                     </Text>
                   </TouchableOpacity>

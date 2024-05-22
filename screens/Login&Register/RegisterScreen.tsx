@@ -32,39 +32,39 @@ const RegisterScreen = props => {
   const [password, setPassword] = useState('');
   const [image, setImage] = useState(null); // Use null instead of an empty string for the image state
 
-  const uploadImage = async imageData => {
-    try {
-      const formData = new FormData();
-      formData.append('image', {
-        uri: imageData.uri,
-        type: imageData.type,
-        name: imageData.fileName,
-      });
+//   const uploadImage = async imageData => {
+//     try {
+//       const formData = new FormData();
+//       formData.append('image', {
+//         uri: imageData.uri,
+//         type: imageData.type,
+//         name: imageData.fileName,
+//       });
 
-      // Add your logic to send the formData to the server if needed
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//       // Add your logic to send the formData to the server if needed
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  const handleImageUpload = async () => {
-    try {
-      ImagePicker.launchCamera(
-        {
-          mediaType: 'photo',
-          includeBase64: false,
-        },
-        response => {
-          if (!response.didCancel) {
-            setImage(response);
-            uploadImage(response);
-          }
-        },
-      );
-    } catch (error) {
-      console.error('Image upload error:', error);
-    }
-  };
+//   const handleImageUpload = async () => {
+//     try {
+//       ImagePicker.launchCamera(
+//         {
+//           mediaType: 'photo',
+//           includeBase64: false,
+//         },
+//         response => {
+//           if (!response.didCancel) {
+//             setImage(response);
+//             uploadImage(response);
+//           }
+//         },
+//       );
+//     } catch (error) {
+//       console.error('Image upload error:', error);
+//     }
+//   };
 
   const handleRegistration = async () => {
     try {
@@ -73,11 +73,11 @@ const RegisterScreen = props => {
         secondName,
         email,
         password,
-        image: image ? image.uri : null, // Pass the URI or null if no image is selected
+        //image: image ? image.uri : null, // Pass the URI or null if no image is selected
       };
 
       const response = await axios.post(
-        'http://192.168.8.101:5009/users',
+        'http://192.168.8.100:5009/users',
         requestData,
       );
 
@@ -91,7 +91,7 @@ const RegisterScreen = props => {
         },
       ]);
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Check your connection for Register Screen', error);
       Alert.alert('Error', 'Registration failed. Please try again.');
     }
   };

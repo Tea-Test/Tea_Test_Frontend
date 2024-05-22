@@ -29,7 +29,7 @@ const MoodResultScreen = ({route}: any) => {
         setProducts(response.data);
         console.log(value + ' Products were successfully retrieved !!!');
       } catch (error) {
-        console.error(error);
+        console.error('Check your connection for MoodResultPage', error);
         Alert.alert('Message', 'Check your connection!');
       }
     };

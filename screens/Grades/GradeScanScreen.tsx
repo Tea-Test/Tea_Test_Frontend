@@ -83,14 +83,7 @@ const GradeScanScreen = (md: any) => {
       const url = await reference.getDownloadURL();
       console.log('Image URL:', url);
       setUploadedImageUrl(url);
-      Alert.alert('Success', 'See the results!', [
-        {
-          text: 'OK',
-          onPress: () => {
-            // moveToResult();
-          },
-        },
-      ]);
+      Alert.alert('Success', 'See the results!');
 
       // Retrieve the download URL of the uploaded image
     } catch (error) {
@@ -98,9 +91,6 @@ const GradeScanScreen = (md: any) => {
     }
   };
 
-  function goToResult() {
-    GradeNavigator.navigate('Grade Result');
-  }
   const stack = md.navigation;
   function moveToResult() {
     stack.navigate('Grade Result', {uploadedImageUrl});
@@ -108,14 +98,18 @@ const GradeScanScreen = (md: any) => {
   return (
     <View style={tw`flex-1 px-5`}>
       <View style={tw`justify-center pt-10 pb-7`}>
-        <Text style={tw`text-black self-center font-bold text-3xl`}>Capture the Tea Dust</Text>
+        <Text style={tw`text-black self-center font-bold text-3xl`}>
+          Capture the Tea Dust
+        </Text>
       </View>
 
       <View style={tw`  bg-white rounded-3 shadow-2xl opacity-100`}>
         <View style={tw`py-6`}>
-          <Text
-            style={tw`text-black self-center text-lg text-justify px-4`}>
-            "Let AI Tailor Your Tea Experience!" Our innovative system analyzes visual ideas to recommend personalized teas, delivering a seamless and customized journey to your ideal cup. It's the modern way to discover your perfect brew, tailored just for you.
+          <Text style={tw`text-black self-center text-lg text-justify px-4`}>
+            "Let AI Tailor Your Tea Experience!" Our innovative system analyzes
+            visual ideas to recommend personalized teas, delivering a seamless
+            and customized journey to your ideal cup. It's the modern way to
+            discover your perfect brew, tailored just for you.
           </Text>
         </View>
       </View>
@@ -131,18 +125,25 @@ const GradeScanScreen = (md: any) => {
 
           {uploadedImageUrl == 'n/a' ? (
             <View style={tw` flex flex-row  self-start`}>
-                <TouchableOpacity onPress={recognizeFromCamera}  style={tw`bg-yellow-400 p-3 w-92 rounded self-center`}>
-              <Text style={tw`text-black font-bold self-center`}>Upload Image</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={recognizeFromCamera}
+                style={tw`bg-yellow-400 p-3 w-92 rounded self-center`}>
+                <Text style={tw`text-black font-bold self-center`}>
+                  Upload Image
+                </Text>
+              </TouchableOpacity>
             </View>
           ) : (
             <View style={tw` flex flex-row  self-end`}>
-                <TouchableOpacity onPress={moveToResult}   style={tw`bg-green-500 p-3  w-92 rounded`}>
-              <Text style={tw`text-white self-center font-bold`}>See Results</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={moveToResult}
+                style={tw`bg-green-500 p-3  w-92 rounded`}>
+                <Text style={tw`text-white self-center font-bold`}>
+                  See Results
+                </Text>
+              </TouchableOpacity>
             </View>
           )}
-            
         </View>
       </View>
       <View>
@@ -163,8 +164,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginVertical: 15,
-    height: 400 /2,
-    width: 300 /2,
+    height: 400 / 2,
+    width: 300 / 2,
   },
 });
 

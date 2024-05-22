@@ -8,81 +8,47 @@ const GradeResultScreen = ({route}: any) => {
   console.log({uploadedImageUrl});
   console.log('Variable is: ' + uploadedImageUrl);
 
-//   const [grade, setGrade] = useState('CTC');
-
+  const [grade, setGrade] = useState();
   const [details, setDetails] = useState([]);
 
-    // useEffect(() => {
-    //   const fetchGrade = async () => {
-    //     try {
-    //       const response = await axios.post(
-    //         'http://192.168.8.100:8000/predict/',
-    //         '',
-    //         {
-    //           params: {
-    //             url: uploadedImageUrl,
-    //           },
-    //           headers: {
-    //             accept: 'application/json',
-    //             'content-type': 'application/x-www-form-urlencoded',
-    //           },
-    //         },
-    //       );
-    //       if (response.data.grade) {
-    //         setGrade(response.data.grade);
-    //       } else {
-    //         setGrade('CTC');
-    //       }
+  useEffect(() => {
+    const fetchGrade = async () => {
+      try {
+        const response = await axios.post(
+          'http://192.168.8.100:8000/predict/',
+          '',
+          {
+            params: {
+              url: uploadedImageUrl,
+            },
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+          },
+        );
+        setGrade(response.data.grade);
+        console.log('Grade was successfully retrieved !!!');
+        console.log(grade);
+      } catch (error) {
+        console.error('Check your connection for GradeResultsScreen', error);
+        Alert.alert('Message', 'Check your connection!');
+      }
+    };
 
-    //       console.log('Grade was successfully retrieved !!!');
-    //       console.log(grade);
-    //     } catch (error) {
-    //       console.error(error);
-    //       Alert.alert('Message', 'Check your connection!');
-    //     }
-    //   };
-
-    //   fetchGrade();
-    // }, []);
-
-//   useEffect(() => {
-//     const fetchGrade = async () => {
-//       try {
-//         const response = await axios.post(
-//           'http://192.168.8.100:8000/predict/',
-//           '',
-//           {
-//             params: {
-//               url: uploadedImageUrl,
-//             },
-//             headers: {
-//               accept: 'application/json',
-//               'content-type': 'application/x-www-form-urlencoded',
-//             },
-//           },
-//         );
-//         setGrade(response.data.grade);
-//         console.log('Grade was successfully retrieved !!!');
-//         console.log(grade);
-//       } catch (error) {
-//         console.error(error);
-//         Alert.alert('Message', 'Check your connection!');
-//       }
-//     };
-
-//     fetchGrade();
-//   }, []);
+    fetchGrade();
+  }, []);
 
   useEffect(() => {
     const fetchDetails = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.8.100:5009/grades/CTC`, //${grade}
+          `http://192.168.8.100:5009/grades/${grade}`,
         );
         setDetails(response.data);
         console.log('Details were successfully retrieved !!!');
       } catch (error) {
-        console.error('Check your connection for GradeResultPage', error);
+        console.error('Check your connection for GradeResultsScreen', error);
         Alert.alert('Message', 'Check your connection!');
       }
     };
@@ -135,6 +101,3 @@ const GradeResultScreen = ({route}: any) => {
 };
 
 export default GradeResultScreen;
-
-
-//this is the running screen, but it has been hardcoded.

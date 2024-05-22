@@ -1,5 +1,8 @@
 
 
+
+********* Run-npm start ****************
+
 import React, { useState, useEffect  } from 'react';
 import { Button, View, StyleSheet  } from 'react-native';
 import DropdownPicker from 'react-native-dropdown-picker';
